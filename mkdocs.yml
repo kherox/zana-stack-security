@@ -1,0 +1,49 @@
+# Source de la documentation publique de Janus Guardian.
+#
+# Ce dépôt est la SOURCE UNIQUE de la documentation produit (directive
+# opérateur 2026-09-03, arbitrage A9 du cadrage portail intégrateur) :
+# le contenu vit ici, la génération des contrats (OpenAPI, contrat de
+# couverture) est produite par les scripts du dépôt source privé qui
+# écrivent directement dans docs/.
+#
+# Le site construit est publié sur la branche `gh-pages` par
+# scripts/publish_portal.py (dépôt privé), après :
+#   - build strict (mkdocs --strict) ;
+#   - garde anti-fuite (0 IP lab, 0 identifiant réel, 0 donnée interne) ;
+#   - garde air-gap (0 ressource externe — le site s'embarque hors ligne).
+
+site_name: Janus Guardian — Documentation
+site_description: Documentation produit — comprendre, déployer, opérer, intégrer
+theme:
+  name: material
+  language: fr
+  font: false  # air-gap : aucune police distante — polices système uniquement
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+strict: true
+site_dir: site
+nav:
+  - Accueil: index.md
+  - Comprendre:
+      - comprendre/index.md
+  - Déployer:
+      - deployer/index.md
+      - Installation du serveur central: deployer/installation-serveur.md
+      - Installation d'un agent: deployer/installation-agent.md
+      - Matrice des flux et ports: deployer/matrice-flux.md
+  - Opérer:
+      - operateur/index.md
+      - Exploitation au quotidien: operateur/exploitation.md
+      - Contrat de couverture: operateur/contrat-couverture.md
+  - Intégrer (API):
+      - client/index.md
+      - Guide d'intégration: client/integration.md
+      - Référence REST: client/reference-api.md
+      - Webhooks signés: client/webhooks.md
+      - Écrire des règles de détection: client/regles-detection.md
+      - Équipements sans agent: client/sources-agentless.md
+      - Piloter par MCP: client/mcp.md
+  - Gouverner:
+      - gouverner/index.md
