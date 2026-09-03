@@ -25,7 +25,7 @@
     
     
       
-        <title>Opérateur SOC — Exploitation - Janus Guardian — Documentation</title>
+        <title>Opérer la plateforme - Janus Guardian — Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#operateur-soc-exploitation" class="md-skip">
+        <a href="#operer-la-plateforme" class="md-skip">
           Aller au contenu
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Opérateur SOC — Exploitation
+              Opérer la plateforme
             
           </span>
         </div>
@@ -931,32 +931,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sources-du-depot" class="md-nav__link">
+  <a href="#les-trois-principes-dexploitation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sources du dépôt
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#principes-dexploitation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Principes d'exploitation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#garde-fous-en-production" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Garde-fous en production
+        Les trois principes d'exploitation
       
     </span>
   </a>
@@ -980,32 +958,33 @@
 
 
 
-<h1 id="operateur-soc-exploitation">Opérateur SOC — Exploitation</h1>
-<p>Espace des exploitants : déploiement, runbooks, gouvernance de détection.</p>
-<h2 id="sources-du-depot">Sources du dépôt</h2>
+<h1 id="operer-la-plateforme">Opérer la plateforme</h1>
+<p>Cette section s'adresse aux <strong>exploitants SOC</strong> : faire vivre la
+plateforme au quotidien, vérifier qu'elle tient ses promesses, et
+savoir ce qu'elle fait — et ne fait pas — quand quelque chose se passe
+mal.</p>
 <ul>
-<li><code>janus-ctl/README.md</code> — CLI opérations (<code>doctor</code>, <code>ota</code>, <code>gate contract</code>,
-  directives, installation).</li>
-<li><code>.memories/10-commands-cheatsheet.md</code> — commandes courantes.</li>
-<li><code>.memories/plan/couverture-v1-0-contrat.md</code> — contrat de couverture
-  détection G1-G21 (voir aussi la page <a href="contrat-couverture/">Contrat de couverture</a>).</li>
-<li><code>.memories/plan/</code> — plans et bilans vivants (M-CTL, purple team, OTA).</li>
+<li><a href="exploitation/">Exploitation au quotidien</a> — diagnostic, mise à jour
+  des agents, dépannage courant, états dégradés assumés.</li>
+<li><a href="contrat-couverture/">Contrat de couverture</a> — les lignes de
+  détection <strong>garanties</strong>, rejouables sur votre installation avec
+  <code>janus-ctl gate contract</code>.</li>
 </ul>
-<h2 id="principes-dexploitation">Principes d'exploitation</h2>
+<h2 id="les-trois-principes-dexploitation">Les trois principes d'exploitation</h2>
 <ol>
-<li><strong>Preuve avant claim</strong> : toute intervention est gate par un harnais
-   rejouable (jamais un « ça devrait marcher »).</li>
-<li><strong>OTA signé</strong> : les agents ne boivent que des packs signés (fail-closed).</li>
-<li><strong>Deux paires de mains</strong> : les actions disruptives (directives
-   <code>ISOLATE_PID</code> / <code>BLOCK_IP</code>) passent des doubles verrous RBAC.</li>
+<li><strong>Preuve avant affirmation.</strong> Une intervention se valide par un test
+   rejouable (<code>janus-ctl gate contract</code>, <code>janus-ctl doctor</code>) — jamais
+   par un « ça devrait marcher ». Un verdict vert archivé vaut mieux
+   qu'une conviction.</li>
+<li><strong>Mise à jour signée, ou rien.</strong> Un agent n'accepte qu'un pack signé ;
+   un pack falsifié est refusé avant l'arrêt du service, et un binaire
+   non conforme refuse de démarrer. La mise à jour est donc toujours un
+   acte sûr, jamais un pari.</li>
+<li><strong>Deux paires de mains sur le disruptif.</strong> L'isolation d'une machine
+   ou le blocage d'une IP exigent une validation à double verrou et sont
+   intégralement journalisés. La plateforme peut se défendre ; elle ne
+   se lance pas toute seule.</li>
 </ol>
-<h2 id="garde-fous-en-production">Garde-fous en production</h2>
-<ul>
-<li>Ingestion : tiers critiques garantis (<code>PriorityRateLimiter</code> collector).</li>
-<li>Routeur externe : lecture seule, quota 402, 60 req/min/tenant, time-out 3 s.</li>
-<li>Journalisation : toute erreur renvoie un corps générique au client ; le
-  détail reste au journal interne.</li>
-</ul>
 
 
 
