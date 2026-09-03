@@ -25,7 +25,7 @@
     
     
       
-        <title>Écrire des règles de détection - Janus Guardian — Documentation</title>
+        <title>Écrire des règles de détection - Zana Security — Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ecrire-une-regle-de-detection-pour-janus" class="md-skip">
+        <a href="#ecrire-une-regle-de-detection-pour-zana-security" class="md-skip">
           Aller au contenu
         </a>
       
@@ -76,7 +76,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href="../.." title="Janus Guardian — Documentation" class="md-header__button md-logo" aria-label="Janus Guardian — Documentation" data-md-component="logo">
+    <a href="../.." title="Zana Security — Documentation" class="md-header__button md-logo" aria-label="Zana Security — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -90,7 +90,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Janus Guardian — Documentation
+            Zana Security — Documentation
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -174,13 +174,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Janus Guardian — Documentation" class="md-nav__button md-logo" aria-label="Janus Guardian — Documentation" data-md-component="logo">
+    <a href="../.." title="Zana Security — Documentation" class="md-nav__button md-logo" aria-label="Zana Security — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    Janus Guardian — Documentation
+    Zana Security — Documentation
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -1292,7 +1292,7 @@
 
 
 
-<h1 id="ecrire-une-regle-de-detection-pour-janus">Écrire une règle de détection pour Janus</h1>
+<h1 id="ecrire-une-regle-de-detection-pour-zana-security">Écrire une règle de détection pour Zana Security</h1>
 <p>Ce document s'adresse aux <strong>développeurs et intégrateurs</strong> qui veulent ajouter
 des détections adaptées à leurs équipements. Il décrit le format des règles,
 les champs disponibles pour la détection, et la manière de valider qu'une
@@ -1300,7 +1300,7 @@ règle est bien chargée.</p>
 <hr />
 <h2 id="le-principe-en-trois-phrases">Le principe en trois phrases</h2>
 <ol>
-<li>Les règles de détection de Janus sont au <strong>format Sigma</strong> — le standard
+<li>Les règles de détection de Zana Security sont au <strong>format Sigma</strong> — le standard
    ouvert du marché (même format que le grand entrepôt public de règles
    <a href="https://github.com/SigmaHQ/sigma">Sigma HQ</a>) : ce que vous savez déjà
    écrire pour d'autres outils Sigma fonctionne ici.</li>
@@ -1323,8 +1323,8 @@ règle est bien chargée.</p>
 <tbody>
 <tr>
 <td><code>/etc/janus/sigma_rules/janus/&lt;source&gt;/</code></td>
-<td>Corpus <strong>produit</strong> Janus</td>
-<td>Règles livrées et maintenues par Janus (ex. <code>fortigate/</code>)</td>
+<td>Corpus <strong>produit</strong> Zana Security</td>
+<td>Règles livrées et maintenues par Zana Security (ex. <code>fortigate/</code>)</td>
 </tr>
 <tr>
 <td><code>/etc/janus/sigma_rules/</code> (hors <code>janus/</code>)</td>
@@ -1339,7 +1339,7 @@ règle est bien chargée.</p>
 </tbody>
 </table>
 <p>Fichiers acceptés : <code>.yml</code> et <code>.yaml</code>, récursivement dans les sous-répertoires.</p>
-<p>⚠️ <strong>Sur une machine où l'agent Janus tourne</strong> : le répertoire <code>/etc/janus</code> est
+<p>⚠️ <strong>Sur une machine où l'agent Zana Security tourne</strong> : le répertoire <code>/etc/janus</code> est
 protégé par le bouclier de l'agent (même <code>root</code> reçoit un refus). La pose de
 règles se fait pendant une courte fenêtre de maintenance (arrêt de l'agent,
 copie, redémarrage) — voir le runbook de déploiement.</p>
@@ -1462,7 +1462,7 @@ description: &gt;                                        # pour le SOC qui lira 
   corrélationnées par le karma low-and-slow.
 references:
   - https://docs.fortinet.com/document/fortigate/8.0.0/administration-guide/250999/log-settings-and-targets
-author: Janus Guardian
+author: Zana Security
 date: 2026-09-03
 tags:
   - attack.t1110                                      # technique MITRE ATT&amp;CK (optionnel)
@@ -1530,20 +1530,20 @@ chargement : une règle morte est sautée avec warning, pas laissée inerte.</p>
 émetteur) et surveillez la console SOC <code>/detections</code> (précision par règle).</p>
 <h2 id="compatibilite-prouvee">Compatibilité prouvée</h2>
 <ul>
-<li>Le collecteur de production Janus charge <strong>plus de 3 100 règles Sigma HQ
+<li>Le collecteur de production Zana Security charge <strong>plus de 3 100 règles Sigma HQ
   publiques non modifiées</strong>.</li>
 <li>Le vérificateur <code>janus-ctl sigma check</code> passe <strong>2 773 règles sur 2 782</strong> du
   corpus public (les 9 restantes sont rejetées par le parseur Sigma lui-même —
-  jeton <code>*</code> nu — rejet préexistant, sans lien avec Janus).</li>
+  jeton <code>*</code> nu — rejet préexistant, sans lien avec Zana Security).</li>
 <li>Un <strong>test de non-régression</strong> verrouille la compatibilité : une règle
   publique (détection DCSync, événement 5136) doit charger ET matcher un
-  événement Windows réaliste à travers le parseur NXLog de Janus.</li>
+  événement Windows réaliste à travers le parseur NXLog de Zana Security.</li>
 </ul>
 <h2 id="references">Références</h2>
 <ul>
 <li><a href="https://github.com/SigmaHQ/sigma/wiki/Specification">Spécification du format Sigma</a></li>
 <li><a href="https://github.com/SigmaHQ/sigma">Entrepôt public de règles Sigma HQ</a></li>
-<li>Corpus produit Janus : <code>deploy/sigma_rules/</code> dans le dépôt</li>
+<li>Corpus produit Zana Security : <code>deploy/sigma_rules/</code> dans le dépôt</li>
 <li>Parseurs et champs exposés : <code>janus-collector/pkg/parsing/mappers.go</code></li>
 </ul>
 
