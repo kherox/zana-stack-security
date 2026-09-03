@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="../regles-detection/">
+        <link rel="prev" href="../webhooks/">
       
       
-        <link rel="next" href="../mcp/">
+        <link rel="next" href="../sources-agentless/">
       
       
         
@@ -25,7 +25,7 @@
     
     
       
-        <title>Équipements sans agent - Janus Guardian — Documentation</title>
+        <title>Écrire des règles de détection - Janus Guardian — Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#connecter-des-equipements-sans-agent" class="md-skip">
+        <a href="#ecrire-une-regle-de-detection-pour-janus" class="md-skip">
           Aller au contenu
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Équipements sans agent
+              Écrire des règles de détection
             
           </span>
         </div>
@@ -748,34 +748,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../regles-detection/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Écrire des règles de détection
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -795,7 +767,7 @@
   <span class="md-ellipsis">
     
   
-    Équipements sans agent
+    Écrire des règles de détection
   
 
     
@@ -813,7 +785,7 @@
   <span class="md-ellipsis">
     
   
-    Équipements sans agent
+    Écrire des règles de détection
   
 
     
@@ -839,10 +811,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#le-chemin-dune-ligne-de-journal" class="md-nav__link">
+  <a href="#le-principe-en-trois-phrases" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Le chemin d'une ligne de journal
+        Le principe en trois phrases
       
     </span>
   </a>
@@ -850,10 +822,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cote-equipement-trois-reglages" class="md-nav__link">
+  <a href="#ou-deposer-une-regle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Côté équipement : trois réglages
+        Où déposer une règle
       
     </span>
   </a>
@@ -861,10 +833,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cote-plateforme-le-registre-de-sources" class="md-nav__link">
+  <a href="#le-contrat-de-champs-sur-quoi-une-regle-peut-matcher" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Côté plateforme : le registre de sources
+        Le contrat de champs — sur quoi une règle peut matcher
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Le contrat de champs — sur quoi une règle peut matcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-champs-universels-toujours-presents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Champs universels (toujours présents)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-champs-normalises-du-parseur-selon-la-source-declaree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Champs normalisés du parseur (selon la source déclarée)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-champs-specifiques-au-parseur-la-partie-interessante-pour-lintegrateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Champs spécifiques au parseur — la partie intéressante pour l'intégrateur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomie-dune-regle-exemple-reel-du-depot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomie d'une règle (exemple réel du dépôt)
       
     </span>
   </a>
@@ -872,10 +894,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resilience-coupure-perte-0" class="md-nav__link">
+  <a href="#score-confiance-et-seuil-dalerte" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Résilience : « coupure → perte 0 »
+        Score, confiance et seuil d'alerte
       
     </span>
   </a>
@@ -883,10 +905,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#honnetete-sur-le-perimetre" class="md-nav__link">
+  <a href="#correlation-et-rafales" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Honnêteté sur le périmètre
+        Corrélation et rafales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#garde-fous-pour-que-tout-le-monde-dormant-reste-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Garde-fous (pour que tout le monde dormant reste possible)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valider-sa-regle-retour-honnete-sans-redemarrage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valider sa règle (retour honnête, sans redémarrage)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibilite-prouvee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibilité prouvée
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Références
       
     </span>
   </a>
@@ -897,6 +963,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sources-agentless/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Équipements sans agent
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1033,10 +1127,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#le-chemin-dune-ligne-de-journal" class="md-nav__link">
+  <a href="#le-principe-en-trois-phrases" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Le chemin d'une ligne de journal
+        Le principe en trois phrases
       
     </span>
   </a>
@@ -1044,10 +1138,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cote-equipement-trois-reglages" class="md-nav__link">
+  <a href="#ou-deposer-une-regle" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Côté équipement : trois réglages
+        Où déposer une règle
       
     </span>
   </a>
@@ -1055,10 +1149,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cote-plateforme-le-registre-de-sources" class="md-nav__link">
+  <a href="#le-contrat-de-champs-sur-quoi-une-regle-peut-matcher" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Côté plateforme : le registre de sources
+        Le contrat de champs — sur quoi une règle peut matcher
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Le contrat de champs — sur quoi une règle peut matcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-champs-universels-toujours-presents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Champs universels (toujours présents)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-champs-normalises-du-parseur-selon-la-source-declaree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Champs normalisés du parseur (selon la source déclarée)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-champs-specifiques-au-parseur-la-partie-interessante-pour-lintegrateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Champs spécifiques au parseur — la partie intéressante pour l'intégrateur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anatomie-dune-regle-exemple-reel-du-depot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomie d'une règle (exemple réel du dépôt)
       
     </span>
   </a>
@@ -1066,10 +1210,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#resilience-coupure-perte-0" class="md-nav__link">
+  <a href="#score-confiance-et-seuil-dalerte" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Résilience : « coupure → perte 0 »
+        Score, confiance et seuil d'alerte
       
     </span>
   </a>
@@ -1077,10 +1221,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#honnetete-sur-le-perimetre" class="md-nav__link">
+  <a href="#correlation-et-rafales" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Honnêteté sur le périmètre
+        Corrélation et rafales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#garde-fous-pour-que-tout-le-monde-dormant-reste-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Garde-fous (pour que tout le monde dormant reste possible)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#valider-sa-regle-retour-honnete-sans-redemarrage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valider sa règle (retour honnête, sans redémarrage)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibilite-prouvee" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compatibilité prouvée
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Références
       
     </span>
   </a>
@@ -1104,67 +1292,259 @@
 
 
 
-<h1 id="connecter-des-equipements-sans-agent">Connecter des équipements sans agent</h1>
-<p>Tous les actifs ne peuvent pas recevoir un capteur : pare-feux,
-routeurs et commutateurs, hyperviseurs, annuaires d'entreprise. La
-plateforme les intègre par <strong>journal</strong> : l'équipement envoie son syslog,
-la plateforme le traite comme une source de détection à part entière —
-avec une <strong>anti-usurpation</strong> qui garantit qu'une source ne peut pas se
-faire passer pour une autre.</p>
-<h2 id="le-chemin-dune-ligne-de-journal">Le chemin d'une ligne de journal</h2>
-<pre><code class="language-text">Équipement (pare-feu, annuaire...)
-   │  syslog RFC 5424, TLS mutuel, port 6514
-   ▼
-Relai de journaux (colocalisé au collecteur)
-   │  file d'attente disque bornée — survit aux coupures
-   ▼
-Collecteur : registre de sources → corrélations → alertes
-</code></pre>
-<h2 id="cote-equipement-trois-reglages">Côté équipement : trois réglages</h2>
+<h1 id="ecrire-une-regle-de-detection-pour-janus">Écrire une règle de détection pour Janus</h1>
+<p>Ce document s'adresse aux <strong>développeurs et intégrateurs</strong> qui veulent ajouter
+des détections adaptées à leurs équipements. Il décrit le format des règles,
+les champs disponibles pour la détection, et la manière de valider qu'une
+règle est bien chargée.</p>
+<hr />
+<h2 id="le-principe-en-trois-phrases">Le principe en trois phrases</h2>
 <ol>
-<li><strong>Format</strong> : syslog RFC 5424 (le format à horodatage structuré, appelé
-   aussi IETF) sur TCP — pas l'ancien format BSD sur UDP.</li>
-<li><strong>Transport</strong> : TLS mutuel vers le port 6514 du relai. « Mutuel »
-   signifie que l'équipement présente lui aussi un certificat client :
-   c'est lui qui prouve son identité, bien avant toute inspection du
-   contenu.</li>
-<li><strong>Certificat client</strong> : émis par l'autorité de certification de la
-   plateforme, avec un nom commun (CN) unique par équipement ou par
-   famille. Le relai n'accepte que les CN explicitement habilités — un
-   équipement inconnu est refusé dès la poignée de main TLS.</li>
+<li>Les règles de détection de Janus sont au <strong>format Sigma</strong> — le standard
+   ouvert du marché (même format que le grand entrepôt public de règles
+   <a href="https://github.com/SigmaHQ/sigma">Sigma HQ</a>) : ce que vous savez déjà
+   écrire pour d'autres outils Sigma fonctionne ici.</li>
+<li>Une règle est un <strong>fichier YAML</strong> déposé dans le répertoire de règles du
+   collecteur — aucun code à compiler, aucun redémarrage de l'agent.</li>
+<li>Une règle <strong>ne déclenche jamais d'action</strong> (blocage, isolation) par
+   elle-même : elle produit une alerte ; le passage à une action est une
+   configuration séparée, maîtrisée par l'opérateur du SOC.</li>
 </ol>
-<h2 id="cote-plateforme-le-registre-de-sources">Côté plateforme : le registre de sources</h2>
-<p>Chaque équipement (ou famille) est <strong>déclaré nominativement</strong> dans le
-registre des sources : un <strong>nom</strong> (celui qui apparaîtra dans les alertes)
-et le <strong>bloc d'adresses (CIDR)</strong> d'où il parle. Ce registre fait deux
-choses :</p>
+<hr />
+<h2 id="ou-deposer-une-regle">Où déposer une règle</h2>
+<table>
+<thead>
+<tr>
+<th>Répertoire</th>
+<th>Usage</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/janus/sigma_rules/janus/&lt;source&gt;/</code></td>
+<td>Corpus <strong>produit</strong> Janus</td>
+<td>Règles livrées et maintenues par Janus (ex. <code>fortigate/</code>)</td>
+</tr>
+<tr>
+<td><code>/etc/janus/sigma_rules/</code> (hors <code>janus/</code>)</td>
+<td>Corpus public</td>
+<td>Règles Sigma HQ importées (plusieurs milliers)</td>
+</tr>
+<tr>
+<td><code>/etc/janus/sigma_rules.d/</code></td>
+<td><strong>Règles intégrateur</strong> — le vôtre</td>
+<td>Chargé EN PLUS du corpus produit au démarrage du collector ; configurable (<code>sigma_rules_extra_path</code> dans collector.yml ou <code>JANUS_SIGMA_RULES_EXTRA_PATH</code>). Absent = ignoré sans erreur</td>
+</tr>
+</tbody>
+</table>
+<p>Fichiers acceptés : <code>.yml</code> et <code>.yaml</code>, récursivement dans les sous-répertoires.</p>
+<p>⚠️ <strong>Sur une machine où l'agent Janus tourne</strong> : le répertoire <code>/etc/janus</code> est
+protégé par le bouclier de l'agent (même <code>root</code> reçoit un refus). La pose de
+règles se fait pendant une courte fenêtre de maintenance (arrêt de l'agent,
+copie, redémarrage) — voir le runbook de déploiement.</p>
+<hr />
+<h2 id="le-contrat-de-champs-sur-quoi-une-regle-peut-matcher">Le contrat de champs — sur quoi une règle peut matcher</h2>
+<p>Le moteur évalue chaque règle contre une <strong>carte de champs</strong> construite par
+événement. Trois familles de champs :</p>
+<h3 id="1-champs-universels-toujours-presents">1. Champs universels (toujours présents)</h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Contenu</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td>Le message brut, tel que reçu</td>
+<td><code>&lt;190&gt;2026-09-03 ... action="deny" ...</code></td>
+</tr>
+<tr>
+<td><code>source_ip</code></td>
+<td>L'adresse IP d'origine normalisée</td>
+<td><code>198.51.100.23</code></td>
+</tr>
+<tr>
+<td><code>severity_label</code></td>
+<td>La sévérité normalisée</td>
+<td><code>warning</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-champs-normalises-du-parseur-selon-la-source-declaree">2. Champs normalisés du parseur (selon la source déclarée)</h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>eventtype</code></td>
+<td>Type d'événement composite (ex. <code>fortigate_event_admin</code>)</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>Action normalisée (ex. <code>login failed</code>, <code>deny</code>)</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>Utilisateur reconnu</td>
+</tr>
+<tr>
+<td><code>sourceip</code> / <code>targetip</code></td>
+<td>IPs normalisées (redondant avec <code>source_ip</code>, utile dans les filtres)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-champs-specifiques-au-parseur-la-partie-interessante-pour-lintegrateur">3. Champs spécifiques au parseur — la partie intéressante pour l'intégrateur</h3>
+<p>Chaque parseur expose <strong>tous les champs natifs du format</strong> qu'il reconnaît :</p>
+<table>
+<thead>
+<tr>
+<th>Source déclarée</th>
+<th>Champs natifs exposés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fortigate</code></td>
+<td><strong>Toutes les paires clé=valeur FortiOS</strong> telles quelles : <code>type</code>, <code>subtype</code>, <code>logid</code>, <code>level</code>, <code>vd</code>, <code>action</code>, <code>srcip</code>, <code>dstip</code>, <code>remip</code>, <code>user</code>, <code>unauthuser</code>, <code>method</code>, <code>service</code>, <code>dstport</code>, <code>policyid</code>, <code>attack</code>, <code>tunneltype</code>, <code>msg</code>, <code>devname</code>, <code>devid</code>… — tout champ documenté FortiOS est matchable sans code supplémentaire</td>
+</tr>
+<tr>
+<td><code>panos</code></td>
+<td>Champs CSV PAN-OS aux <strong>noms canoniques documentés</strong> (types TRAFFIC, THREAT et AUTHENTICATION mappés position par position) : <code>type</code>, <code>subtype</code>, <code>src</code>, <code>dst</code>, <code>rule</code>, <code>srcuser</code>, <code>app</code>, <code>action</code>, <code>dport</code>, <code>proto</code>, <code>category</code>, <code>threatid</code>, <code>severity</code>, <code>misc</code>, <code>direction</code>, <code>user</code>, <code>event</code>, <code>desc</code>, <code>factorno</code>… — les autres types (CONFIG, SYSTEM…) exposent le préfixe commun (<code>type</code>, <code>subtype</code>, <code>serial</code>) + le message brut</td>
+</tr>
+<tr>
+<td><code>esxi</code></td>
+<td><code>component</code> (composant émetteur en minuscules : <code>sshd</code>, <code>hostd</code>, <code>vpxa</code>, <code>vmkernel</code>, <code>vobd</code>…), <code>hostname</code>, <code>pid</code>/<code>procid</code>, <code>severity</code> (normalisée depuis le PRI syslog), <code>message_body</code>, <code>structured_data</code> (RFC 5424) — et les connexions normalisées : <code>action</code> (<code>login_success</code>/<code>login_failed</code>), <code>user</code>, <code>source_ip</code> (sshd style OpenSSH + hostd/Vpxa « User x@ip logged in »)</td>
+</tr>
+<tr>
+<td><code>nxlog</code></td>
+<td><strong>Toutes les clés du JSON NXLog</strong> (événements Windows) telles quelles <strong>ET en minuscules</strong> : <code>eventid</code> (chaîne matchable — 4625, 4740…), <code>eventtype</code> (<code>AUDIT_FAILURE</code>…), <code>targetusername</code>, <code>subjectusername</code>, <code>ipaddress</code>, <code>servicename</code>, <code>ticketencryptiontype</code>, <code>status</code>, <code>logontype</code>, <code>workstationname</code>, <code>hostname</code>, <code>channel</code>, <code>sourcename</code>, <code>message</code>… — plus les normalisations <code>user</code>, <code>source_ip</code> (IpAddress « - » = local, ignorée) et <code>action</code> sémantique (<code>login_failed</code>, <code>account_locked</code>, <code>account_created</code>, <code>account_deleted</code>, <code>password_reset</code>)</td>
+</tr>
+<tr>
+<td><code>authlog</code></td>
+<td><code>command</code> (sudo), champ brut dans <code>message</code></td>
+</tr>
+<tr>
+<td><code>journald</code></td>
+<td><code>message</code>, <code>unit</code>, <code>pid</code></td>
+</tr>
+<tr>
+<td><code>ssh</code>, <code>nginx</code>, <code>wazuh</code>, <code>aws</code></td>
+<td>Voir le code : <code>janus-collector/pkg/parsing/mappers.go</code></td>
+</tr>
+<tr>
+<td><code>generic</code> (défaut)</td>
+<td><code>message</code> brut uniquement — une règle sur mots-clés/regex du message fonctionne quand même</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Équipement sans parseur dédié ?</strong> Déclarez la source en <code>generic</code> et
+écrivez votre règle sur <code>message</code> (mots-clés, expressions régulières) : la
+détection fonctionne. Les champs structurés demandent un parseur — les
+parseurs déclaratifs (décrire un format en YAML, sans compiler) sont à
+  l'étude comme évolution.</p>
+</blockquote>
+<hr />
+<h2 id="anatomie-dune-regle-exemple-reel-du-depot">Anatomie d'une règle (exemple réel du dépôt)</h2>
+<pre><code class="language-yaml">title: FortiGate — échec de connexion SSL-VPN          # visible dans les alertes
+id: 3f9a1c52-7b8e-4d21-9c46-a1e0f7d83b01              # UUID unique, généré par vous
+status: stable
+description: &gt;                                        # pour le SOC qui lira l'alerte
+  Échec de connexion au VPN SSL FortiGate. Les rafales sont
+  corrélationnées par le karma low-and-slow.
+references:
+  - https://docs.fortinet.com/document/fortigate/8.0.0/administration-guide/250999/log-settings-and-targets
+author: Janus Guardian
+date: 2026-09-03
+tags:
+  - attack.t1110                                      # technique MITRE ATT&amp;CK (optionnel)
+logsource:
+  product: fortios                                    # informatif pour le classement
+detection:
+  selection:
+    type: event                                       # ← les champs de la carte ci-dessus
+    subtype: vpn
+    action: tunnel-login-failed
+  condition: selection
+falsepositives:
+  - Utilisateur légitime qui se trompe de mot de passe
+level: medium                                          # low | medium | high | critical
+</code></pre>
+<p>Modificateurs Sigma usuels supportés : <code>|contains</code>, <code>|startswith</code>,
+<code>|endswith</code>, <code>|re</code> (regex), listes de valeurs, <code>selection and not filter</code>.</p>
+<hr />
+<h2 id="score-confiance-et-seuil-dalerte">Score, confiance et seuil d'alerte</h2>
 <ul>
-<li>Attribution : chaque ligne de journal est rattachée à sa source
-  déclarée — les alertes portent le nom de l'équipement, pas une adresse
-  anonyme ;</li>
-<li>Anti-usurpation : un journal qui se présente sous une identité depuis
-  un endroit inattendu déclenche une alerte (<code>source_origin_unexpected</code>)
-  et se voit réduit à une confiance plancher — un attaquant qui rejoue
-  du syslog est vu, au lieu d'être cru.</li>
+<li>Le <code>level</code> de la règle fixe le score de base : <code>critical</code> → 100, <code>high</code> → 80,
+  <code>medium</code> → 50, <code>low</code> → 20.</li>
+<li>Le score est <strong>pondéré par la confiance de la source</strong> (déclarée dans le
+  registre des sources) : <code>score × confiance / 100</code>.</li>
+<li>Une alerte Sigma est émise au-dessus du seuil 50. Concrètement : une règle
+  <code>medium</code> sur une source à confiance 85 alerte ; une règle <code>low</code> reste un
+  signal d'investigation sans alerter — utile pour nourrir le fil SOC.</li>
 </ul>
-<h2 id="resilience-coupure-perte-0">Résilience : « coupure → perte 0 »</h2>
-<p>La file d'attente du relai vit <strong>sur disque</strong> et redémarre où elle
-s'était arrêtée. Une coupure du collecteur ne perd pas les journaux
-reçus pendant l'arrêt : ils sont rejoués dès le retour du service. Ce
-comportement est <strong>prouvé par le contrat de couverture</strong> : une coupure
-de 10 minutes avec poursuite de l'émission, puis vérification que les
-100 % des messages sont arrivés en base après rétablissement.</p>
-<h2 id="honnetete-sur-le-perimetre">Honnêteté sur le périmètre</h2>
+<h2 id="correlation-et-rafales">Corrélation et rafales</h2>
+<p>Une règle Sigma évalue <strong>un événement à la fois</strong> — pas de compteur interne.
+Les rafales (brute force, low-and-slow) sont prises en charge par le moteur
+de karma du collecteur : des alertes répétées d'une même zone font monter le
+score et déclenchent l'alerte « Karma Violation (Low &amp; Slow) » existante.
+Écrivez donc la règle unitaire honnêtement, le produit fait la répétition.</p>
+<h2 id="garde-fous-pour-que-tout-le-monde-dormant-reste-possible">Garde-fous (pour que tout le monde dormant reste possible)</h2>
 <ul>
-<li>L'analyse fine des journaux est <strong>famille par famille</strong> (pare-feu,
-  annuaire...) : les formats constructeurs sont ajoutés progressivement.
-  À défaut de parseur dédié, la source est traitée en générique — les
-  journaux arrivent en base et alimentent le registre, mais sans
-  traduction constructeur.</li>
-<li>Les équipements sans agent sont une source de <strong>détection</strong>, pas de
-  <strong>blocage</strong> : il n'y a pas de capteur pour y appliquer une isolation.
-  Les directives de blocage en boucle SOAR concernent les adresses IP
-  vues attaquer — appliquées là où un contrôle existe.</li>
+<li><strong>Déduplication</strong> : une alerte identique à moins de ~5 minutes est silenciée.</li>
+<li><strong>Plafond d'ordres automatiques</strong> : 6 actions automatiques / 10 minutes,
+  quoi qu'il arrive (jamais appliqué aux actions humaines).</li>
+<li><strong>Vue précision</strong> : la console SOC <code>/detections</code> montre les vrais positifs /
+  faux positifs <strong>par règle</strong> — c'est là qu'une règle bruyante se voit
+  immédiatement.</li>
+</ul>
+<h2 id="valider-sa-regle-retour-honnete-sans-redemarrage">Valider sa règle (retour honnête, sans redémarrage)</h2>
+<p><strong>1. Hors ligne, avant tout dépôt</strong> :</p>
+<pre><code class="language-bash">janus-ctl sigma check ma-regle.yml        # un fichier
+janus-ctl sigma check /etc/janus/sigma_rules.d/   # ou tout un répertoire
+</code></pre>
+<p>Le contrôle utilise le <strong>même parseur que le collector</strong> : un « OK » garantit
+que la règle chargera. Il vérifie en plus le format (titre, détection,
+condition) et <strong>les références croisées</strong> — une condition qui cite une
+sélection inexistante serait une règle morte (l'évaluateur rend silencieusement
+faux) : elle est signalée <code>INVALIDE</code> avec la raison. Code de sortie 1 si une
+règle est invalide — utilisable en CI.</p>
+<p><strong>2. Après dépôt</strong> (fenêtre de maintenance si l'agent tourne) :
+redémarrez le collecteur et vérifiez le <strong>rapport de chargement</strong> :</p>
+<pre><code>🧠 Sigma Engine loaded N rules from [/etc/janus/sigma_rules /etc/janus/sigma_rules.d] (skipped: K)
+   ↳ skipped: /etc/janus/sigma_rules.d/ma-regle.yml: &lt;raison&gt;
+</code></pre>
+<p>Chaque règle sautée est <strong>nommée avec sa raison</strong> — jamais de silence. La
+métrique <code>janus_sigma_rules_skipped</code> (port :9092) expose le compteur pour la
+surveillance. La garde des conditions orphelines s'applique AUSSI au
+chargement : une règle morte est sautée avec warning, pas laissée inerte.</p>
+<p><strong>3. Test en conditions réelles</strong> : envoyez un message réel (ou votre
+émetteur) et surveillez la console SOC <code>/detections</code> (précision par règle).</p>
+<h2 id="compatibilite-prouvee">Compatibilité prouvée</h2>
+<ul>
+<li>Le collecteur de production Janus charge <strong>plus de 3 100 règles Sigma HQ
+  publiques non modifiées</strong>.</li>
+<li>Le vérificateur <code>janus-ctl sigma check</code> passe <strong>2 773 règles sur 2 782</strong> du
+  corpus public (les 9 restantes sont rejetées par le parseur Sigma lui-même —
+  jeton <code>*</code> nu — rejet préexistant, sans lien avec Janus).</li>
+<li>Un <strong>test de non-régression</strong> verrouille la compatibilité : une règle
+  publique (détection DCSync, événement 5136) doit charger ET matcher un
+  événement Windows réaliste à travers le parseur NXLog de Janus.</li>
+</ul>
+<h2 id="references">Références</h2>
+<ul>
+<li><a href="https://github.com/SigmaHQ/sigma/wiki/Specification">Spécification du format Sigma</a></li>
+<li><a href="https://github.com/SigmaHQ/sigma">Entrepôt public de règles Sigma HQ</a></li>
+<li>Corpus produit Janus : <code>deploy/sigma_rules/</code> dans le dépôt</li>
+<li>Parseurs et champs exposés : <code>janus-collector/pkg/parsing/mappers.go</code></li>
 </ul>
 
 

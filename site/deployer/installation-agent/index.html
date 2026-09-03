@@ -11,23 +11,25 @@
       
       
       
-        <link rel="prev" href="../client/mcp/">
+        <link rel="prev" href="../installation-serveur/">
       
+      
+        <link rel="next" href="../matrice-flux/">
       
       
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Gouverner — sécurité, conformité, limites - Janus Guardian — Documentation</title>
+        <title>Installation d'un agent - Janus Guardian — Documentation</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -40,7 +42,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -58,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gouverner-securite-conformite-limites" class="md-skip">
+        <a href="#installer-un-agent" class="md-skip">
           Aller au contenu
         </a>
       
@@ -74,7 +76,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="En-tête">
-    <a href=".." title="Janus Guardian — Documentation" class="md-header__button md-logo" aria-label="Janus Guardian — Documentation" data-md-component="logo">
+    <a href="../.." title="Janus Guardian — Documentation" class="md-header__button md-logo" aria-label="Janus Guardian — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -94,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Gouverner — sécurité, conformité, limites
+              Installation d'un agent
             
           </span>
         </div>
@@ -172,7 +174,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Janus Guardian — Documentation" class="md-nav__button md-logo" aria-label="Janus Guardian — Documentation" data-md-component="logo">
+    <a href="../.." title="Janus Guardian — Documentation" class="md-nav__button md-logo" aria-label="Janus Guardian — Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -190,7 +192,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -240,7 +242,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../comprendre/" class="md-nav__link ">
+            <a href="../../comprendre/" class="md-nav__link ">
               
   
   
@@ -283,6 +285,8 @@
       
   
   
+    
+  
   
   
     
@@ -307,15 +311,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../deployer/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -339,7 +343,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -359,7 +363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deployer/installation-serveur/" class="md-nav__link">
+      <a href="../installation-serveur/" class="md-nav__link">
         
   
   
@@ -384,10 +388,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../deployer/installation-agent/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation d'un agent
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -403,6 +434,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequis-en-echec-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prérequis en échec automatique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lidentite-un-certificat-signe-par-un-humain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'identité : un certificat signé par un humain
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ce-que-garantit-linstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que garantit l'installation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mettre-a-jour-ota-signe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mettre à jour (OTA signé)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérifier
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -415,7 +521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deployer/matrice-flux/" class="md-nav__link">
+      <a href="../matrice-flux/" class="md-nav__link">
         
   
   
@@ -477,7 +583,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../operateur/" class="md-nav__link ">
+            <a href="../../operateur/" class="md-nav__link ">
               
   
   
@@ -521,7 +627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../operateur/exploitation/" class="md-nav__link">
+      <a href="../../operateur/exploitation/" class="md-nav__link">
         
   
   
@@ -549,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../operateur/contrat-couverture/" class="md-nav__link">
+      <a href="../../operateur/contrat-couverture/" class="md-nav__link">
         
   
   
@@ -619,7 +725,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../client/" class="md-nav__link ">
+            <a href="../../client/" class="md-nav__link ">
               
   
   
@@ -663,7 +769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../client/integration/" class="md-nav__link">
+      <a href="../../client/integration/" class="md-nav__link">
         
   
   
@@ -691,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../client/reference-api/" class="md-nav__link">
+      <a href="../../client/reference-api/" class="md-nav__link">
         
   
   
@@ -719,7 +825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../client/webhooks/" class="md-nav__link">
+      <a href="../../client/webhooks/" class="md-nav__link">
         
   
   
@@ -747,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../client/regles-detection/" class="md-nav__link">
+      <a href="../../client/regles-detection/" class="md-nav__link">
         
   
   
@@ -775,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../client/sources-agentless/" class="md-nav__link">
+      <a href="../../client/sources-agentless/" class="md-nav__link">
         
   
   
@@ -803,7 +909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../client/mcp/" class="md-nav__link">
+      <a href="../../client/mcp/" class="md-nav__link">
         
   
   
@@ -835,8 +941,6 @@
       
   
   
-    
-  
   
   
     
@@ -855,15 +959,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../gouverner/" class="md-nav__link ">
               
   
   
@@ -882,7 +986,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -929,10 +1033,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#securite-de-la-plateforme-elle-meme" class="md-nav__link">
+  <a href="#prerequis-en-echec-automatique" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sécurité de la plateforme elle-même
+        Prérequis en échec automatique
       
     </span>
   </a>
@@ -940,10 +1044,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#conformite-sca" class="md-nav__link">
+  <a href="#lidentite-un-certificat-signe-par-un-humain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conformité (SCA)
+        L'identité : un certificat signé par un humain
       
     </span>
   </a>
@@ -951,10 +1055,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#isolation-multi-tenant-formulation-officielle" class="md-nav__link">
+  <a href="#ce-que-garantit-linstallation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Isolation multi-tenant — formulation officielle
+        Ce que garantit l'installation
       
     </span>
   </a>
@@ -962,10 +1066,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#limites-assumees-extraits-du-contrat-de-couverture" class="md-nav__link">
+  <a href="#mettre-a-jour-ota-signe" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Limites assumées (extraits du contrat de couverture)
+        Mettre à jour (OTA signé)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérifier
       
     </span>
   </a>
@@ -989,83 +1104,54 @@
 
 
 
-<h1 id="gouverner-securite-conformite-limites">Gouverner — sécurité, conformité, limites</h1>
-<p>Cette section décrit les garanties de sécurité du produit, les contrôles
-de conformité, et — tout aussi important — ses limites, énoncées telles
-quelles. Une limite documentée se planifie ; une limite cachée se
-subit.</p>
-<h2 id="securite-de-la-plateforme-elle-meme">Sécurité de la plateforme elle-même</h2>
-<ul>
-<li><strong>Chiffrement mutuel (mTLS) partout</strong> : agent, collecteur, hub et outils
-  d'administration s'authentifient réciproquement par certificats. Le mode
-  non chiffré est refusé en production.</li>
-<li><strong>Chaîne de signature des packs</strong> : chaque pack de capteurs est signé
-  (Ed25519) ; un pack falsifié est refusé au staging, et s'il passait, la
-  barrière de démarrage refuse le binaire non conforme à son manifeste.</li>
-<li><strong>Bouclier de l'agent</strong> : un eBPF LSM protège l'agent contre l'injection
-  mémoire, le remplacement de son binaire et l'exécution sans fichier — la
-  bannière de démarrage est honnête (elle refuse d'afficher « actif » si un
-  hook critique manque).</li>
-<li><strong>Ordres à règle des deux</strong> : les opérations perturbantes (isolation d'une
-  machine, blocage d'IP) passent par une confirmation et sont journalisées
-  (audit).</li>
-<li><strong>Quotas API</strong> : l'API externe est en lecture seule, limitée (60
-  requêtes/min) et refuse fail-closed sans plan associé (402).</li>
-</ul>
-<h2 id="conformite-sca">Conformité (SCA)</h2>
-<p>Quatre référentiels embarqués, évalués par machine avec score honnête et
-empreinte SHA-256 des versions de règles : <strong>CIS</strong> (36 règles), <strong>ANSSI</strong>
-(15), <strong>PCI-DSS</strong> (11), <strong>ISO 27001</strong> (10). Les versions de règles sont
-immuables ; une règle falsifiée est refusée et listée. Gestion des
-vulnérabilités (TVM) : bundles signés alimentés par les catalogues KEV /
-EPSS / paquets de la distribution.</p>
-<h2 id="isolation-multi-tenant-formulation-officielle">Isolation multi-tenant — formulation officielle</h2>
-<blockquote>
-<p>L'isolation entre locataires est <strong>applicative</strong> : chaque requête porte une
-identité vérifiée (JWT ou clé d'API à périmètre), et le filtre locataire
-est appliqué par les dépendances d'authentification et revérifié module par
-module, avec des tests d'isolation par module (lecture croisée refusée en
-404 indistinguable) et une matrice d'isolation automatisée sur l'API
-externe. Le Row-Level Security PostgreSQL est planifié en <strong>seconde couche
-de défense</strong> au passage multi-tenant (SaaS), avec un rôle dédié documenté
-pour l'ingestion.</p>
-</blockquote>
-<p>Cette formulation est volontairement falsifiable : elle décrit ce qui est
-vérifié aujourd'hui, pas une promesse d'exhaustivité.</p>
-<h2 id="limites-assumees-extraits-du-contrat-de-couverture">Limites assumées (extraits du contrat de couverture)</h2>
-<table>
-<thead>
-<tr>
-<th>Limite</th>
-<th>Détail</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Linux uniquement</td>
-<td>Windows/macOS exclus par choix d'architecture</td>
-</tr>
-<tr>
-<td>Suppression via chemins relatifs</td>
-<td>Un <code>rm -rf</code> opérant en chemins relatifs (dirfd) n'est pas attribué au chemin surveillé — les suppressions par chemin absolu sont couvertes</td>
-</tr>
-<tr>
-<td>Écritures page-cache (Dirty Pipe)</td>
-<td>L'écriture par corruption du cache page échappe au FIM (ouverture en lecture seule) — détection par effets aval</td>
-</tr>
-<tr>
-<td>Isolation multi-tenant complète</td>
-<td>Reportée au passage SaaS (RLS seconde couche) — voir ci-dessus</td>
-</tr>
-<tr>
-<td>Un seul store sous RLS</td>
-<td>PostgreSQL seulement ; la couche application reste le point d'enforcement commun (relationnel, séries temporelles, ClickHouse)</td>
-</tr>
-</tbody>
-</table>
-<p>La liste exhaustive et tenue à jour des exclusions vit dans le contrat de
-couverture (section Opérateur) — une exclusion n'y entre qu'avec une décision
-documentée.</p>
+<h1 id="installer-un-agent">Installer un agent</h1>
+<p>L'agent est le capteur posé sur chaque machine à surveiller (serveur,
+poste d'administration). Son installation est <strong>pack-style</strong> : un paquet
+signé, vérifié avant tout arrêt de service, installé en une fenêtre de
+quelques secondes, avec retour arrière automatique.</p>
+<pre><code class="language-bash">sudo janus-ctl install agent --pack janus-agent-pack.tar.gz
+</code></pre>
+<h2 id="prerequis-en-echec-automatique">Prérequis en échec automatique</h2>
+<p>L'agent embarque un <strong>bouclier noyau</strong> (eBPF LSM — la couche de
+sécurité du noyau Linux) : la machine doit démarrer avec <code>lsm=bpf</code>
+activé et le noyau le supporter. Sans cela, l'installation <strong>refuse</strong> —
+un agent muet ne serait pas un agent, ce serait un mensonge affiché en
+vert.</p>
+<p>Prérequis annoncés honnêtement : noyau Linux <strong>5.17 minimum</strong> (nos
+programmes eBPF utilisent les boucles du noyau), production validée sur
+les noyaux <strong>6.x</strong>.</p>
+<h2 id="lidentite-un-certificat-signe-par-un-humain">L'identité : un certificat signé par un humain</h2>
+<p>À la première installation, l'agent génère sa clé privée <strong>localement</strong>
+(elle ne quitte jamais la machine) et produit une <strong>demande de
+certificat</strong>. La commande s'arrête là : la signature par l'autorité de
+la stack est une <strong>étape d'habilitation humaine</strong>. Un serveur compromis
+ne peut pas obtenir d'identité tout seul.</p>
+<h2 id="ce-que-garantit-linstallation">Ce que garantit l'installation</h2>
+<ol>
+<li>Le pack est <strong>vérifié</strong> (empreintes + signature) <strong>avant</strong> l'arrêt
+   de quoi que ce soit.</li>
+<li>La fenêtre d'arrêt est typiquement de <strong>~3 secondes</strong> ; une unité
+   systemd précédente est sauvegardée et restaurée si l'installation
+   échoue (retour arrière automatique).</li>
+<li>Au démarrage, une <strong>barrière</strong> compare le binaire exécuté au
+   manifeste signé du pack : un binaire remplacé <strong>refuse de démarrer</strong>.</li>
+<li>La configuration existante de la machine est <strong>conservée</strong>.</li>
+</ol>
+<h2 id="mettre-a-jour-ota-signe">Mettre à jour (OTA signé)</h2>
+<p>Les mises à jour suivent la même discipline :</p>
+<pre><code class="language-bash">janus-ctl ota build   # assembler le paquet
+janus-ctl ota sign    # signer (la clé ne quitte jamais le serveur central)
+janus-ctl ota verify  # vérifier AVANT l'arrêt du service
+janus-ctl ota deploy  # fenêtre courte + retour arrière armé
+janus-ctl ota rollback  # retour arrière explicite si besoin
+</code></pre>
+<p>Une alerte <code>agent_offline</code> pendant une fenêtre de maintenance est
+normale : elle part dès la fermeture du flux, et le réarmement se fait
+à la reconnexion.</p>
+<h2 id="verifier">Vérifier</h2>
+<pre><code class="language-bash">janus-ctl doctor      # empreinte du binaire vs manifeste, bouclier, métriques
+janus-ctl gate contract  # rejoue le contrat de couverture sur CETTE machine
+</code></pre>
 
 
 
@@ -1115,10 +1201,10 @@ documentée.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.indexes", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
