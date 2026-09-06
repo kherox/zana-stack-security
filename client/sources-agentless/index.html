@@ -1113,17 +1113,24 @@ avec une <strong>anti-usurpation</strong> qui garantit qu'une source ne peut pas
 faire passer pour une autre.</p>
 <h2 id="le-chemin-dune-ligne-de-journal">Le chemin d'une ligne de journal</h2>
 <pre><code class="language-text">Équipement (pare-feu, annuaire...)
-   │  syslog RFC 5424, TLS mutuel, port 6514
+   │  syslog — format natif de l'équipement ou RFC 5424 — TLS mutuel, port 6514
    ▼
 Relai de journaux (colocalisé au collecteur)
-   │  file d'attente disque bornée — survit aux coupures
+   │  reconnaît le dialecte, file d'attente disque bornée — survit aux coupures
    ▼
 Collecteur : registre de sources → corrélations → alertes
 </code></pre>
 <h2 id="cote-equipement-trois-reglages">Côté équipement : trois réglages</h2>
 <ol>
-<li><strong>Format</strong> : syslog RFC 5424 (le format à horodatage structuré, appelé
-   aussi IETF) sur TCP — pas l'ancien format BSD sur UDP.</li>
+<li><strong>Format</strong> : le format natif de l'équipement. Le relai reconnaît à la
+   réception les principaux dialectes — syslog IETF (RFC 5424), syslog
+   ancien BSD (RFC 3164), FortiGate clé=valeur, NXLog JSON, PAN-OS CSV —
+   et route chacun vers son analyse dédiée. Un format non encore reconnu
+   n'est pas rejeté : il est livré étiqueté « inconnu », consultable en
+   base ; un nouveau dialecte s'ajoute par une règle de reconnaissance,
+   jamais par une perte. UDP reste exclu : TCP et l'accusé de réception
+   qu'il offre sont ce qui rend la promesse « coupure → perte 0 »
+   tenable.</li>
 <li><strong>Transport</strong> : TLS mutuel vers le port 6514 du relai. « Mutuel »
    signifie que l'équipement présente lui aussi un certificat client :
    c'est lui qui prouve son identité, bien avant toute inspection du
@@ -1156,11 +1163,13 @@ de 10 minutes avec poursuite de l'émission, puis vérification que les
 100 % des messages sont arrivés en base après rétablissement.</p>
 <h2 id="honnetete-sur-le-perimetre">Honnêteté sur le périmètre</h2>
 <ul>
-<li>L'analyse fine des journaux est <strong>famille par famille</strong> (pare-feu,
-  annuaire...) : les formats constructeurs sont ajoutés progressivement.
-  À défaut de parseur dédié, la source est traitée en générique — les
-  journaux arrivent en base et alimentent le registre, mais sans
-  traduction constructeur.</li>
+<li>L'analyse fine des journaux est <strong>famille par famille</strong>. Les quatre
+  familles pilotes — pare-feux FortiGate et PAN-OS, hyperviseurs ESXi,
+  annuaires Windows via NXLog — disposent de leur analyse dédiée, active
+  sur le chemin du relai comme en direct. Pour les autres familles, la
+  source est traitée en générique : les journaux arrivent en base
+  (étiquetés « inconnu » au relai si leur format n'est pas reconnu) et
+  alimentent le registre, sans traduction constructeur.</li>
 <li>Les équipements sans agent sont une source de <strong>détection</strong>, pas de
   <strong>blocage</strong> : il n'y a pas de capteur pour y appliquer une isolation.
   Les directives de blocage en boucle SOAR concernent les adresses IP
