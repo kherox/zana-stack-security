@@ -14,7 +14,7 @@
         <link rel="prev" href="../installation-serveur/">
       
       
-        <link rel="next" href="../matrice-flux/">
+        <link rel="next" href="../deploiement-flotte/">
       
       
         
@@ -302,6 +302,8 @@
       
         
       
+        
+      
     
     
     
@@ -509,6 +511,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploiement-flotte/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Déployer en flotte
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1111,6 +1141,11 @@ signé, vérifié avant tout arrêt de service, installé en une fenêtre de
 quelques secondes, avec retour arrière automatique.</p>
 <pre><code class="language-bash">sudo janus-ctl install agent --pack janus-agent-pack.tar.gz
 </code></pre>
+<p>C'est la mécanique locale. En pratique, vous ne la manipulez pas machine
+par machine : la commande <strong><code>janus-ctl deploy --config janus-deploy.yaml</code></strong>
+(<a href="../deploiement-flotte/">Déployer en flotte</a>) transporte elle-même l'outil
+et le paquet signé vers chaque machine du parc, exécute cette installation
+à distance et rend un rapport par machine.</p>
 <h2 id="prerequis-en-echec-automatique">Prérequis en échec automatique</h2>
 <p>L'agent embarque un <strong>bouclier noyau</strong> (eBPF LSM — la couche de
 sécurité du noyau Linux) : la machine doit démarrer avec <code>lsm=bpf</code>
