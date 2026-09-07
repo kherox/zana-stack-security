@@ -423,6 +423,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ce-dont-la-machine-a-besoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce dont la machine a besoin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ce-que-contient-le-binaire-installateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que contient le binaire installateur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ce-que-la-commande-installe" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1033,6 +1055,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#ce-dont-la-machine-a-besoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce dont la machine a besoin
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ce-que-contient-le-binaire-installateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que contient le binaire installateur
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ce-que-la-commande-installe" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1105,12 +1149,59 @@
 
 
 <h1 id="installer-le-serveur-central">Installer le serveur central</h1>
-<p>L'installation du serveur central (la « stack ») est <strong>une commande</strong> :</p>
+<p>L'installation du serveur central (la « stack ») est <strong>une commande, un
+fichier</strong> : le binaire <code>janus-ctl</code> que vous fournit l'éditeur contient
+tout le produit — les binaires des services, l'application web, les
+schémas de base de données, les règles de détection. Aucun dépôt de
+code, aucun compilateur, aucun téléchargement propre au produit :</p>
 <pre><code class="language-bash">sudo janus-ctl install stack
 </code></pre>
 <p>Elle est <strong>native</strong> : des services systemd sur une machine Linux, sans
 Docker. Elle est <strong>idempotente</strong> : rejouable sans casse — une
 ré-exécution complète ce qui manque et conserve ce qui existe.</p>
+<h2 id="ce-dont-la-machine-a-besoin">Ce dont la machine a besoin</h2>
+<table>
+<thead>
+<tr>
+<th>Prérequis</th>
+<th>Détail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ubuntu 24.04 LTS, x86_64</td>
+<td>systemd requis, pas de Docker</td>
+</tr>
+<tr>
+<td>Droits root</td>
+<td><code>sudo janus-ctl install stack</code></td>
+</tr>
+<tr>
+<td>RAM ≥ 8 Go, disque ≥ 50 Go</td>
+<td>contrôlés avant de toucher à quoi que ce soit</td>
+</tr>
+<tr>
+<td>Accès aux dépôts de paquets Ubuntu</td>
+<td>uniquement pour les dépendances système (PostgreSQL, ClickHouse, Grafana…) — rien de propre au produit ne se télécharge</td>
+</tr>
+</tbody>
+</table>
+<p>Le binaire refuse de démarrer si un prérequis manque : c'est
+volontaire, une installation à moitié faite est pire qu'une
+installation refusée.</p>
+<h2 id="ce-que-contient-le-binaire-installateur">Ce que contient le binaire installateur</h2>
+<p><code>janus-ctl</code> transporte un payload signé : les binaires des services
+(collecteur, agent, PKI, CLI), l'application Nexus avec ses dépendances
+Python, les modèles de configuration, le schéma SQL et son jeu de
+démarrage, et le corpus de règles Sigma. Chaque fichier y est
+accompagné de son empreinte, et l'ensemble d'une signature
+cryptographique (Ed25519).</p>
+<p>À l'installation, le binaire <strong>vérifie ce qu'il transporte avant de
+poser le moindre fichier</strong> : signature d'abord, empreintes ensuite. Au
+premier écart, tout est supprimé et l'installation est refusée. Les
+secrets (mots de passe de bases, clés) ne sont pas dans le binaire :
+ils sont <strong>générés sur votre machine</strong> pendant l'installation, en
+permissions 0600, et ne la quittent jamais.</p>
 <h2 id="ce-que-la-commande-installe">Ce que la commande installe</h2>
 <table>
 <thead>
@@ -1152,16 +1243,16 @@ ré-exécution complète ce qui manque et conserve ce qui existe.</p>
 </table>
 <h2 id="le-deroule-en-trois-temps">Le déroulé, en trois temps</h2>
 <ol>
-<li><strong>Prérequis en échec automatique</strong> — la commande refuse de démarrer
-   sur une machine non conforme : Linux avec systemd, droits root,
-   Ubuntu 24.04 LTS, disque ≥ 50 Go, commandes requises présentes.
-   S'il existe déjà un déploiement, elle refuse aussi — sauf
-   <code>--adopt</code> (adoption conservatrice d'une installation existante).</li>
-<li><strong>L'installateur canonique</strong> — la commande enveloppe et exécute
-   l'installateur de référence du produit (dix sections : utilisateurs,
-   secrets, paquets, binaires, configurations, bases de données,
-   services). Les secrets sont <strong>générés localement</strong> et stockés en
-   0600 dans <code>/etc/janus/</code> — ils ne quittent jamais la machine.</li>
+<li><strong>Prérequis et vérification</strong> — la commande contrôle la machine
+   (systemd, root, RAM, disque), puis vérifie la signature et les
+   empreintes du payload embarqué. S'il existe déjà un déploiement,
+   elle refuse — sauf <code>--adopt</code> (adoption conservatrice d'une
+   installation existante).</li>
+<li><strong>Installation</strong> — les binaires vérifiés sont déployés, les
+   dépendances système installées par <code>apt</code>, l'application web
+   configurée à partir des dépendances embarquées (aucun téléchargement
+   Python), les secrets générés localement, les bases initialisées avec
+   le schéma embarqué, les services démarrés dans l'ordre.</li>
 <li><strong>Assertions</strong> — le verdict est mécanique, pas espéré : services
    actifs, santé de l'API en HTTP 200, port gRPC joignable. Tout échec
    est affiché avec la commande de diagnostic à lancer.</li>
@@ -1170,9 +1261,9 @@ ré-exécution complète ce qui manque et conserve ce qui existe.</p>
 <p>Avant une vraie installation, demandez le plan :</p>
 <pre><code class="language-bash">sudo janus-ctl install stack --dry-run
 </code></pre>
-<p>Le mode <code>--dry-run</code> exécute les prérequis et affiche ce qui serait fait,
-<strong>sans écrire un seul fichier</strong> (garanti par la suite de tests du
-produit — chaque mutation est sous garde).</p>
+<p>Le mode <code>--dry-run</code> vérifie le payload embarqué dans un répertoire
+temporaire et exécute l'installation en mode planification : <strong>rien
+n'est écrit sur la machine</strong>.</p>
 <h2 id="apres-linstallation">Après l'installation</h2>
 <pre><code class="language-bash">janus-ctl doctor        # état honnête de la machine, en une commande
 </code></pre>
